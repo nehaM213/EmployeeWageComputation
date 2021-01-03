@@ -1,0 +1,25 @@
+#!/bin/bash -x
+isPartTime=1;
+isFullTime=2;
+totalSalary=0;
+hourlyRate=20;
+numWorkingDays=3;
+
+for (( day=1 ; day<=$numWorkingDays ;day++ ))
+do
+	empCheck=$(( RANDOM % 3 ));
+	case $empCheck in
+		$isFullTime)
+			empHours=8
+			;;
+		$isPartTime)
+			empHours=4;
+			;;
+		*)
+			empHours=0;
+			;;
+	esac
+	salary=$(( $empHours*$hourlyRate ));
+	totalSalary=$(( $totalSalary+$salary ));
+done
+echo Monthly Wage=$totalSalary
